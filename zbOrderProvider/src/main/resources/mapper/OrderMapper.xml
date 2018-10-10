@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dongyun.service.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.dongyun.service.dao.entity.Order" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="TENANTID" property="tenantid" jdbcType="VARCHAR" />
+    <result column="WID" property="wid" jdbcType="VARCHAR" />
+    <result column="ORIAMOUNT" property="oriamount" jdbcType="DECIMAL" />
+    <result column="DESCOUNT" property="descount" jdbcType="DECIMAL" />
+    <result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+    <result column="FREIGHT" property="freight" jdbcType="DECIMAL" />
+    <result column="OTHER_AMOUNT" property="otherAmount" jdbcType="DECIMAL" />
+    <result column="USED_POINT" property="usedPoint" jdbcType="DECIMAL" />
+    <result column="ADDRESSID" property="addressid" jdbcType="VARCHAR" />
+    <result column="EXPRESS_ID" property="expressId" jdbcType="VARCHAR" />
+    <result column="EXPRESS_TYPE" property="expressType" jdbcType="CHAR" />
+    <result column="PAYTYPE" property="paytype" jdbcType="VARCHAR" />
+    <result column="SLIP_TITLE" property="slipTitle" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="SETUP_TIME" property="setupTime" jdbcType="TIMESTAMP" />
+    <result column="PAYMENT_TIME" property="paymentTime" jdbcType="TIMESTAMP" />
+    <result column="ORIORDERID" property="oriorderid" jdbcType="VARCHAR" />
+    <result column="TRNCOMPID" property="trncompid" jdbcType="VARCHAR" />
+    <result column="TRNSLIPNO" property="trnslipno" jdbcType="VARCHAR" />
+    <result column="TRNSEND_TIME" property="trnsendTime" jdbcType="TIMESTAMP" />
+    <result column="PRESETTLE_TIME" property="presettleTime" jdbcType="TIMESTAMP" />
+    <result column="SCHEDULED_TIME" property="scheduledTime" jdbcType="TIMESTAMP" />
+    <result column="TRNSIGN_TIME" property="trnsignTime" jdbcType="TIMESTAMP" />
+    <result column="TRNSIGN_PERSON" property="trnsignPerson" jdbcType="VARCHAR" />
+    <result column="CONFIRM_TIME" property="confirmTime" jdbcType="TIMESTAMP" />
+    <result column="COMPLETE_TIME" property="completeTime" jdbcType="TIMESTAMP" />
+    <result column="CANCEL_TIME" property="cancelTime" jdbcType="TIMESTAMP" />
+    <result column="CANCEL_RESON" property="cancelReson" jdbcType="VARCHAR" />
+    <result column="TENANT_AID1" property="tenantAid1" jdbcType="VARCHAR" />
+    <result column="TENANT_AID2" property="tenantAid2" jdbcType="VARCHAR" />
+    <result column="TENANT_AID3" property="tenantAid3" jdbcType="VARCHAR" />
+    <result column="COUPONID1" property="couponid1" jdbcType="VARCHAR" />
+    <result column="COUPONID2" property="couponid2" jdbcType="VARCHAR" />
+    <result column="COUPONID3" property="couponid3" jdbcType="VARCHAR" />
+    <result column="BUYER_COMMENT" property="buyerComment" jdbcType="VARCHAR" />
+    <result column="ORDER_COMMENT" property="orderComment" jdbcType="VARCHAR" />
+    <result column="SCORED_FLAG" property="scoredFlag" jdbcType="CHAR" />
+    <result column="LAST_DISCOUNT" property="lastDiscount" jdbcType="DECIMAL" />
+    <result column="ACCEPT_AMOUNT" property="acceptAmount" jdbcType="DECIMAL" />
+    <result column="RETURN_AMOUNT" property="returnAmount" jdbcType="DECIMAL" />
+    <result column="ORDER_TYPE" property="orderType" jdbcType="CHAR" />
+    <result column="PAYED_FLAG" property="payedFlag" jdbcType="CHAR" />
+    <result column="INSTIME" property="instime" jdbcType="TIMESTAMP" />
+    <result column="INSUSER" property="insuser" jdbcType="VARCHAR" />
+    <result column="UPDTIME" property="updtime" jdbcType="TIMESTAMP" />
+    <result column="UPDUSER" property="upduser" jdbcType="VARCHAR" />
+    <result column="DELFLG" property="delflg" jdbcType="CHAR" />
+    <result column="PAYMENT_LOG_ID" property="paymentLogId" jdbcType="VARCHAR" />
+    <result column="COMMIT_FLAG" property="commitFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USERID, TENANTID, WID, ORIAMOUNT, DESCOUNT, AMOUNT, FREIGHT, OTHER_AMOUNT, USED_POINT, 
+    ADDRESSID, EXPRESS_ID, EXPRESS_TYPE, PAYTYPE, SLIP_TITLE, STATUS, SETUP_TIME, PAYMENT_TIME, 
+    ORIORDERID, TRNCOMPID, TRNSLIPNO, TRNSEND_TIME, PRESETTLE_TIME, SCHEDULED_TIME, TRNSIGN_TIME, 
+    TRNSIGN_PERSON, CONFIRM_TIME, COMPLETE_TIME, CANCEL_TIME, CANCEL_RESON, TENANT_AID1, 
+    TENANT_AID2, TENANT_AID3, COUPONID1, COUPONID2, COUPONID3, BUYER_COMMENT, ORDER_COMMENT, 
+    SCORED_FLAG, LAST_DISCOUNT, ACCEPT_AMOUNT, RETURN_AMOUNT, ORDER_TYPE, PAYED_FLAG, 
+    INSTIME, INSUSER, UPDTIME, UPDUSER, DELFLG, PAYMENT_LOG_ID, COMMIT_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from orders
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dongyun.service.dao.entity.Order" >
+    insert into orders (ID, USERID, TENANTID, 
+      WID, ORIAMOUNT, DESCOUNT, 
+      AMOUNT, FREIGHT, OTHER_AMOUNT, 
+      USED_POINT, ADDRESSID, EXPRESS_ID, 
+      EXPRESS_TYPE, PAYTYPE, SLIP_TITLE, 
+      STATUS, SETUP_TIME, PAYMENT_TIME, 
+      ORIORDERID, TRNCOMPID, TRNSLIPNO, 
+      TRNSEND_TIME, PRESETTLE_TIME, SCHEDULED_TIME, 
+      TRNSIGN_TIME, TRNSIGN_PERSON, CONFIRM_TIME, 
+      COMPLETE_TIME, CANCEL_TIME, CANCEL_RESON, 
+      TENANT_AID1, TENANT_AID2, TENANT_AID3, 
+      COUPONID1, COUPONID2, COUPONID3, 
+      BUYER_COMMENT, ORDER_COMMENT, SCORED_FLAG, 
+      LAST_DISCOUNT, ACCEPT_AMOUNT, RETURN_AMOUNT, 
+      ORDER_TYPE, PAYED_FLAG, INSTIME, 
+      INSUSER, UPDTIME, UPDUSER, 
+      DELFLG, PAYMENT_LOG_ID, COMMIT_FLAG
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{tenantid,jdbcType=VARCHAR}, 
+      #{wid,jdbcType=VARCHAR}, #{oriamount,jdbcType=DECIMAL}, #{descount,jdbcType=DECIMAL}, 
+      #{amount,jdbcType=DECIMAL}, #{freight,jdbcType=DECIMAL}, #{otherAmount,jdbcType=DECIMAL}, 
+      #{usedPoint,jdbcType=DECIMAL}, #{addressid,jdbcType=VARCHAR}, #{expressId,jdbcType=VARCHAR}, 
+      #{expressType,jdbcType=CHAR}, #{paytype,jdbcType=VARCHAR}, #{slipTitle,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR}, #{setupTime,jdbcType=TIMESTAMP}, #{paymentTime,jdbcType=TIMESTAMP}, 
+      #{oriorderid,jdbcType=VARCHAR}, #{trncompid,jdbcType=VARCHAR}, #{trnslipno,jdbcType=VARCHAR}, 
+      #{trnsendTime,jdbcType=TIMESTAMP}, #{presettleTime,jdbcType=TIMESTAMP}, #{scheduledTime,jdbcType=TIMESTAMP}, 
+      #{trnsignTime,jdbcType=TIMESTAMP}, #{trnsignPerson,jdbcType=VARCHAR}, #{confirmTime,jdbcType=TIMESTAMP}, 
+      #{completeTime,jdbcType=TIMESTAMP}, #{cancelTime,jdbcType=TIMESTAMP}, #{cancelReson,jdbcType=VARCHAR}, 
+      #{tenantAid1,jdbcType=VARCHAR}, #{tenantAid2,jdbcType=VARCHAR}, #{tenantAid3,jdbcType=VARCHAR}, 
+      #{couponid1,jdbcType=VARCHAR}, #{couponid2,jdbcType=VARCHAR}, #{couponid3,jdbcType=VARCHAR}, 
+      #{buyerComment,jdbcType=VARCHAR}, #{orderComment,jdbcType=VARCHAR}, #{scoredFlag,jdbcType=CHAR}, 
+      #{lastDiscount,jdbcType=DECIMAL}, #{acceptAmount,jdbcType=DECIMAL}, #{returnAmount,jdbcType=DECIMAL}, 
+      #{orderType,jdbcType=CHAR}, #{payedFlag,jdbcType=CHAR}, #{instime,jdbcType=TIMESTAMP}, 
+      #{insuser,jdbcType=VARCHAR}, #{updtime,jdbcType=TIMESTAMP}, #{upduser,jdbcType=VARCHAR}, 
+      #{delflg,jdbcType=CHAR}, #{paymentLogId,jdbcType=VARCHAR}, #{commitFlag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dongyun.service.dao.entity.Order" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="tenantid != null" >
+        TENANTID,
+      </if>
+      <if test="wid != null" >
+        WID,
+      </if>
+      <if test="oriamount != null" >
+        ORIAMOUNT,
+      </if>
+      <if test="descount != null" >
+        DESCOUNT,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="freight != null" >
+        FREIGHT,
+      </if>
+      <if test="otherAmount != null" >
+        OTHER_AMOUNT,
+      </if>
+      <if test="usedPoint != null" >
+        USED_POINT,
+      </if>
+      <if test="addressid != null" >
+        ADDRESSID,
+      </if>
+      <if test="expressId != null" >
+        EXPRESS_ID,
+      </if>
+      <if test="expressType != null" >
+        EXPRESS_TYPE,
+      </if>
+      <if test="paytype != null" >
+        PAYTYPE,
+      </if>
+      <if test="slipTitle != null" >
+        SLIP_TITLE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="setupTime != null" >
+        SETUP_TIME,
+      </if>
+      <if test="paymentTime != null" >
+        PAYMENT_TIME,
+      </if>
+      <if test="oriorderid != null" >
+        ORIORDERID,
+      </if>
+      <if test="trncompid != null" >
+        TRNCOMPID,
+      </if>
+      <if test="trnslipno != null" >
+        TRNSLIPNO,
+      </if>
+      <if test="trnsendTime != null" >
+        TRNSEND_TIME,
+      </if>
+      <if test="presettleTime != null" >
+        PRESETTLE_TIME,
+      </if>
+      <if test="scheduledTime != null" >
+        SCHEDULED_TIME,
+      </if>
+      <if test="trnsignTime != null" >
+        TRNSIGN_TIME,
+      </if>
+      <if test="trnsignPerson != null" >
+        TRNSIGN_PERSON,
+      </if>
+      <if test="confirmTime != null" >
+        CONFIRM_TIME,
+      </if>
+      <if test="completeTime != null" >
+        COMPLETE_TIME,
+      </if>
+      <if test="cancelTime != null" >
+        CANCEL_TIME,
+      </if>
+      <if test="cancelReson != null" >
+        CANCEL_RESON,
+      </if>
+      <if test="tenantAid1 != null" >
+        TENANT_AID1,
+      </if>
+      <if test="tenantAid2 != null" >
+        TENANT_AID2,
+      </if>
+      <if test="tenantAid3 != null" >
+        TENANT_AID3,
+      </if>
+      <if test="couponid1 != null" >
+        COUPONID1,
+      </if>
+      <if test="couponid2 != null" >
+        COUPONID2,
+      </if>
+      <if test="couponid3 != null" >
+        COUPONID3,
+      </if>
+      <if test="buyerComment != null" >
+        BUYER_COMMENT,
+      </if>
+      <if test="orderComment != null" >
+        ORDER_COMMENT,
+      </if>
+      <if test="scoredFlag != null" >
+        SCORED_FLAG,
+      </if>
+      <if test="lastDiscount != null" >
+        LAST_DISCOUNT,
+      </if>
+      <if test="acceptAmount != null" >
+        ACCEPT_AMOUNT,
+      </if>
+      <if test="returnAmount != null" >
+        RETURN_AMOUNT,
+      </if>
+      <if test="orderType != null" >
+        ORDER_TYPE,
+      </if>
+      <if test="payedFlag != null" >
+        PAYED_FLAG,
+      </if>
+      <if test="instime != null" >
+        INSTIME,
+      </if>
+      <if test="insuser != null" >
+        INSUSER,
+      </if>
+      <if test="updtime != null" >
+        UPDTIME,
+      </if>
+      <if test="upduser != null" >
+        UPDUSER,
+      </if>
+      <if test="delflg != null" >
+        DELFLG,
+      </if>
+      <if test="paymentLogId != null" >
+        PAYMENT_LOG_ID,
+      </if>
+      <if test="commitFlag != null" >
+        COMMIT_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null" >
+        #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null" >
+        #{wid,jdbcType=VARCHAR},
+      </if>
+      <if test="oriamount != null" >
+        #{oriamount,jdbcType=DECIMAL},
+      </if>
+      <if test="descount != null" >
+        #{descount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="freight != null" >
+        #{freight,jdbcType=DECIMAL},
+      </if>
+      <if test="otherAmount != null" >
+        #{otherAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="usedPoint != null" >
+        #{usedPoint,jdbcType=DECIMAL},
+      </if>
+      <if test="addressid != null" >
+        #{addressid,jdbcType=VARCHAR},
+      </if>
+      <if test="expressId != null" >
+        #{expressId,jdbcType=VARCHAR},
+      </if>
+      <if test="expressType != null" >
+        #{expressType,jdbcType=CHAR},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="slipTitle != null" >
+        #{slipTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="setupTime != null" >
+        #{setupTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentTime != null" >
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oriorderid != null" >
+        #{oriorderid,jdbcType=VARCHAR},
+      </if>
+      <if test="trncompid != null" >
+        #{trncompid,jdbcType=VARCHAR},
+      </if>
+      <if test="trnslipno != null" >
+        #{trnslipno,jdbcType=VARCHAR},
+      </if>
+      <if test="trnsendTime != null" >
+        #{trnsendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="presettleTime != null" >
+        #{presettleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scheduledTime != null" >
+        #{scheduledTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trnsignTime != null" >
+        #{trnsignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trnsignPerson != null" >
+        #{trnsignPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmTime != null" >
+        #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null" >
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelReson != null" >
+        #{cancelReson,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantAid1 != null" >
+        #{tenantAid1,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantAid2 != null" >
+        #{tenantAid2,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantAid3 != null" >
+        #{tenantAid3,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid1 != null" >
+        #{couponid1,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid2 != null" >
+        #{couponid2,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid3 != null" >
+        #{couponid3,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerComment != null" >
+        #{buyerComment,jdbcType=VARCHAR},
+      </if>
+      <if test="orderComment != null" >
+        #{orderComment,jdbcType=VARCHAR},
+      </if>
+      <if test="scoredFlag != null" >
+        #{scoredFlag,jdbcType=CHAR},
+      </if>
+      <if test="lastDiscount != null" >
+        #{lastDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="acceptAmount != null" >
+        #{acceptAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="returnAmount != null" >
+        #{returnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="payedFlag != null" >
+        #{payedFlag,jdbcType=CHAR},
+      </if>
+      <if test="instime != null" >
+        #{instime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuser != null" >
+        #{insuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updtime != null" >
+        #{updtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduser != null" >
+        #{upduser,jdbcType=VARCHAR},
+      </if>
+      <if test="delflg != null" >
+        #{delflg,jdbcType=CHAR},
+      </if>
+      <if test="paymentLogId != null" >
+        #{paymentLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="commitFlag != null" >
+        #{commitFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dongyun.service.dao.entity.Order" >
+    update orders
+    <set >
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null" >
+        TENANTID = #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null" >
+        WID = #{wid,jdbcType=VARCHAR},
+      </if>
+      <if test="oriamount != null" >
+        ORIAMOUNT = #{oriamount,jdbcType=DECIMAL},
+      </if>
+      <if test="descount != null" >
+        DESCOUNT = #{descount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="freight != null" >
+        FREIGHT = #{freight,jdbcType=DECIMAL},
+      </if>
+      <if test="otherAmount != null" >
+        OTHER_AMOUNT = #{otherAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="usedPoint != null" >
+        USED_POINT = #{usedPoint,jdbcType=DECIMAL},
+      </if>
+      <if test="addressid != null" >
+        ADDRESSID = #{addressid,jdbcType=VARCHAR},
+      </if>
+      <if test="expressId != null" >
+        EXPRESS_ID = #{expressId,jdbcType=VARCHAR},
+      </if>
+      <if test="expressType != null" >
+        EXPRESS_TYPE = #{expressType,jdbcType=CHAR},
+      </if>
+      <if test="paytype != null" >
+        PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="slipTitle != null" >
+        SLIP_TITLE = #{slipTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="setupTime != null" >
+        SETUP_TIME = #{setupTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentTime != null" >
+        PAYMENT_TIME = #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oriorderid != null" >
+        ORIORDERID = #{oriorderid,jdbcType=VARCHAR},
+      </if>
+      <if test="trncompid != null" >
+        TRNCOMPID = #{trncompid,jdbcType=VARCHAR},
+      </if>
+      <if test="trnslipno != null" >
+        TRNSLIPNO = #{trnslipno,jdbcType=VARCHAR},
+      </if>
+      <if test="trnsendTime != null" >
+        TRNSEND_TIME = #{trnsendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="presettleTime != null" >
+        PRESETTLE_TIME = #{presettleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scheduledTime != null" >
+        SCHEDULED_TIME = #{scheduledTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trnsignTime != null" >
+        TRNSIGN_TIME = #{trnsignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trnsignPerson != null" >
+        TRNSIGN_PERSON = #{trnsignPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmTime != null" >
+        CONFIRM_TIME = #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        COMPLETE_TIME = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null" >
+        CANCEL_TIME = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelReson != null" >
+        CANCEL_RESON = #{cancelReson,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantAid1 != null" >
+        TENANT_AID1 = #{tenantAid1,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantAid2 != null" >
+        TENANT_AID2 = #{tenantAid2,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantAid3 != null" >
+        TENANT_AID3 = #{tenantAid3,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid1 != null" >
+        COUPONID1 = #{couponid1,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid2 != null" >
+        COUPONID2 = #{couponid2,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid3 != null" >
+        COUPONID3 = #{couponid3,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerComment != null" >
+        BUYER_COMMENT = #{buyerComment,jdbcType=VARCHAR},
+      </if>
+      <if test="orderComment != null" >
+        ORDER_COMMENT = #{orderComment,jdbcType=VARCHAR},
+      </if>
+      <if test="scoredFlag != null" >
+        SCORED_FLAG = #{scoredFlag,jdbcType=CHAR},
+      </if>
+      <if test="lastDiscount != null" >
+        LAST_DISCOUNT = #{lastDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="acceptAmount != null" >
+        ACCEPT_AMOUNT = #{acceptAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="returnAmount != null" >
+        RETURN_AMOUNT = #{returnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null" >
+        ORDER_TYPE = #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="payedFlag != null" >
+        PAYED_FLAG = #{payedFlag,jdbcType=CHAR},
+      </if>
+      <if test="instime != null" >
+        INSTIME = #{instime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuser != null" >
+        INSUSER = #{insuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updtime != null" >
+        UPDTIME = #{updtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduser != null" >
+        UPDUSER = #{upduser,jdbcType=VARCHAR},
+      </if>
+      <if test="delflg != null" >
+        DELFLG = #{delflg,jdbcType=CHAR},
+      </if>
+      <if test="paymentLogId != null" >
+        PAYMENT_LOG_ID = #{paymentLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="commitFlag != null" >
+        COMMIT_FLAG = #{commitFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dongyun.service.dao.entity.Order" >
+    update orders
+    set USERID = #{userid,jdbcType=VARCHAR},
+      TENANTID = #{tenantid,jdbcType=VARCHAR},
+      WID = #{wid,jdbcType=VARCHAR},
+      ORIAMOUNT = #{oriamount,jdbcType=DECIMAL},
+      DESCOUNT = #{descount,jdbcType=DECIMAL},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      FREIGHT = #{freight,jdbcType=DECIMAL},
+      OTHER_AMOUNT = #{otherAmount,jdbcType=DECIMAL},
+      USED_POINT = #{usedPoint,jdbcType=DECIMAL},
+      ADDRESSID = #{addressid,jdbcType=VARCHAR},
+      EXPRESS_ID = #{expressId,jdbcType=VARCHAR},
+      EXPRESS_TYPE = #{expressType,jdbcType=CHAR},
+      PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      SLIP_TITLE = #{slipTitle,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=CHAR},
+      SETUP_TIME = #{setupTime,jdbcType=TIMESTAMP},
+      PAYMENT_TIME = #{paymentTime,jdbcType=TIMESTAMP},
+      ORIORDERID = #{oriorderid,jdbcType=VARCHAR},
+      TRNCOMPID = #{trncompid,jdbcType=VARCHAR},
+      TRNSLIPNO = #{trnslipno,jdbcType=VARCHAR},
+      TRNSEND_TIME = #{trnsendTime,jdbcType=TIMESTAMP},
+      PRESETTLE_TIME = #{presettleTime,jdbcType=TIMESTAMP},
+      SCHEDULED_TIME = #{scheduledTime,jdbcType=TIMESTAMP},
+      TRNSIGN_TIME = #{trnsignTime,jdbcType=TIMESTAMP},
+      TRNSIGN_PERSON = #{trnsignPerson,jdbcType=VARCHAR},
+      CONFIRM_TIME = #{confirmTime,jdbcType=TIMESTAMP},
+      COMPLETE_TIME = #{completeTime,jdbcType=TIMESTAMP},
+      CANCEL_TIME = #{cancelTime,jdbcType=TIMESTAMP},
+      CANCEL_RESON = #{cancelReson,jdbcType=VARCHAR},
+      TENANT_AID1 = #{tenantAid1,jdbcType=VARCHAR},
+      TENANT_AID2 = #{tenantAid2,jdbcType=VARCHAR},
+      TENANT_AID3 = #{tenantAid3,jdbcType=VARCHAR},
+      COUPONID1 = #{couponid1,jdbcType=VARCHAR},
+      COUPONID2 = #{couponid2,jdbcType=VARCHAR},
+      COUPONID3 = #{couponid3,jdbcType=VARCHAR},
+      BUYER_COMMENT = #{buyerComment,jdbcType=VARCHAR},
+      ORDER_COMMENT = #{orderComment,jdbcType=VARCHAR},
+      SCORED_FLAG = #{scoredFlag,jdbcType=CHAR},
+      LAST_DISCOUNT = #{lastDiscount,jdbcType=DECIMAL},
+      ACCEPT_AMOUNT = #{acceptAmount,jdbcType=DECIMAL},
+      RETURN_AMOUNT = #{returnAmount,jdbcType=DECIMAL},
+      ORDER_TYPE = #{orderType,jdbcType=CHAR},
+      PAYED_FLAG = #{payedFlag,jdbcType=CHAR},
+      INSTIME = #{instime,jdbcType=TIMESTAMP},
+      INSUSER = #{insuser,jdbcType=VARCHAR},
+      UPDTIME = #{updtime,jdbcType=TIMESTAMP},
+      UPDUSER = #{upduser,jdbcType=VARCHAR},
+      DELFLG = #{delflg,jdbcType=CHAR},
+      PAYMENT_LOG_ID = #{paymentLogId,jdbcType=VARCHAR},
+      COMMIT_FLAG = #{commitFlag,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

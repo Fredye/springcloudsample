@@ -1,0 +1,17 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Fredye/springcloudconfigsample
+          username: Fredye
+          password: pass
+          search-paths: dev,prod
+          clone-on-start: true
+        encrypt:
+          enabled: true
+

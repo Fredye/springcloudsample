@@ -1,0 +1,28 @@
+server:
+  port: 8002
+logging:
+  level:
+    root: info
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.dongyun.app.dao.entity
+spring:
+  application:
+    name: user-service
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://192.168.99.100:9411/
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/dyshop?characterEncoding=utf8&useSSL=true
+    username: loanadmin
+    password: loanadmin
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.99.100:8761/eureka
+  instance:
+    ip-address: true

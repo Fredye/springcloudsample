@@ -1,0 +1,11 @@
+encrypt:
+  key: encryptkey
+  key-store:
+    alias: keyalias
+    secret: secretkey
+    location: classpath:/server.jks
+    password: mypass
+#keytool -genkeypair -alias keyalias -keyalg RSA \
+#  -dname "CN=Web Server,OU=Unit,O=Organization,L=City,S=State,C=US" \
+#  -keypass secretkey -keystore server.jks -storepass mypass
+#curl http://127.0.0.1:8000/encrypt -d loanadmin

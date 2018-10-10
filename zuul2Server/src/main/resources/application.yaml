@@ -1,0 +1,43 @@
+server:
+  port: 8412
+spring:
+  application:
+    name: zuul
+  servlet:
+    multipart:
+      max-file-size: 10Mb
+      max-request-size: 10Mb
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.99.100:8761/eureka
+  instance:
+    ip-address: true
+zuul:
+  routes:
+    order-client:
+      path: /orders/**
+#      service-id: order-client
+      sensitive-headers:
+    user-client:
+      path: /users/**
+      strip-perfix: false
+  ignored-patterns: /**/admin/**
+  ribbon-isolation-strategy: thread #设置Hystrix隔离策略为线程池，缺省为SEMAPHORE
+  thread-pool:
+    use-separate-thread-pools: true #每个路由使用独立的线程池
+  FormBodyWrapperFilter: #禁止某filter
+    pre:
+      disable: true
+#  ignored-headers: header1,header2
+#  sensitive-headers: Cookie,
+ribbon:
+  eager-load:
+    enabled: true
+  okhttp:
+    enable: true
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"

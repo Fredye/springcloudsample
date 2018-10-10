@@ -1,0 +1,29 @@
+server:
+  port: 8012
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.99.100:8761/eureka
+  instance:
+    ip-address: true
+spring:
+  application:
+    name: user-client
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://192.168.99.100:9411
+user:
+  serviceUrl: http://user-service
+
+#可以为指定服务设置ribbon配置，<服务名>.ribbon.NFLoadBalancerRuleClassName
+#也可以指定全局ribbon配置
+ribbon:
+  NFLoadBalancerRuleClassName: com.netflix.loadbalance.RandomRule
+#  NFLoadBalancerClassName
+#  NFLoadBalancerPingClassName:
+
+#如果不使用eureka，可以设置ribbon的服务列表
+# ribbon.eureka.enabled = false
+# <服务名>.ribbon.listOfServers = server1,server2

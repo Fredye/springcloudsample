@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dongyun.app.dao.persistence.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.dongyun.app.dao.entity.User" >
+    <id column="OID_USER_ID" property="oidUserId" jdbcType="CHAR" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="CHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="HEADPIC" property="headpic" jdbcType="VARCHAR" />
+    <result column="USER_PWD" property="userPwd" jdbcType="VARCHAR" />
+    <result column="USER_PWD_STRENGTH" property="userPwdStrength" jdbcType="CHAR" />
+    <result column="USER_PAY_PWD" property="userPayPwd" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="CHAR" />
+    <result column="INVESTMENT_FLG" property="investmentFlg" jdbcType="CHAR" />
+    <result column="FINANCING_FLG" property="financingFlg" jdbcType="CHAR" />
+    <result column="GUARANTEE_FLG" property="guaranteeFlg" jdbcType="CHAR" />
+    <result column="EMAIL_VERIFY_FLG" property="emailVerifyFlg" jdbcType="CHAR" />
+    <result column="LOGIN_TIMES" property="loginTimes" jdbcType="INTEGER" />
+    <result column="LOGIN_ERROR_TIMES" property="loginErrorTimes" jdbcType="INTEGER" />
+    <result column="LAST_LOGIN_IP" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="LAST_LOGIN_DATE" property="lastLoginDate" jdbcType="TIMESTAMP" />
+    <result column="OID_CUSTOMER_SERVICE_ID" property="oidCustomerServiceId" jdbcType="TINYINT" />
+    <result column="AUTO_FINANCE_TENDER_FLG" property="autoFinanceTenderFlg" jdbcType="CHAR" />
+    <result column="AUTO_FINANCE_PROD_FLG" property="autoFinanceProdFlg" jdbcType="CHAR" />
+    <result column="DEL_FLG" property="delFlg" jdbcType="CHAR" />
+    <result column="INS_DATE" property="insDate" jdbcType="TIMESTAMP" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+    <result column="PUSH_CLIENT_ID" property="pushClientId" jdbcType="VARCHAR" />
+    <result column="PUSH_CLIENT_TAG" property="pushClientTag" jdbcType="VARCHAR" />
+    <result column="VALID" property="valid" jdbcType="CHAR" />
+    <result column="OLD_PASSWORD" property="oldPassword" jdbcType="VARCHAR" />
+    <result column="OLD_SALT" property="oldSalt" jdbcType="VARCHAR" />
+    <result column="THIRD_PART_FLAG" property="thirdPartFlag" jdbcType="CHAR" />
+    <result column="THIRD_PART_NUMBER" property="thirdPartNumber" jdbcType="VARCHAR" />
+    <result column="USER_DIVISION" property="userDivision" jdbcType="CHAR" />
+    <result column="USER_ACCOUNT_TYPE" property="userAccountType" jdbcType="CHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="AREA" property="area" jdbcType="VARCHAR" />
+    <result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+    <result column="USER_STATUS_TYPE" property="userStatusType" jdbcType="CHAR" />
+    <result column="USER_STATUS_FLG" property="userStatusFlg" jdbcType="CHAR" />
+    <result column="TAG_END_MODE" property="tagEndMode" jdbcType="CHAR" />
+    <result column="PUSH_AFTER_FLG" property="pushAfterFlg" jdbcType="CHAR" />
+    <result column="USER_LEVEL" property="userLevel" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    OID_USER_ID, USER_ID, MOBILE, EMAIL, HEADPIC, USER_PWD, USER_PWD_STRENGTH, USER_PAY_PWD, 
+    USER_TYPE, INVESTMENT_FLG, FINANCING_FLG, GUARANTEE_FLG, EMAIL_VERIFY_FLG, LOGIN_TIMES, 
+    LOGIN_ERROR_TIMES, LAST_LOGIN_IP, LAST_LOGIN_DATE, OID_CUSTOMER_SERVICE_ID, AUTO_FINANCE_TENDER_FLG, 
+    AUTO_FINANCE_PROD_FLG, DEL_FLG, INS_DATE, UPD_DATE, PUSH_CLIENT_ID, PUSH_CLIENT_TAG, 
+    VALID, OLD_PASSWORD, OLD_SALT, THIRD_PART_FLAG, THIRD_PART_NUMBER, USER_DIVISION, 
+    USER_ACCOUNT_TYPE, PROVINCE, CITY, AREA, NICKNAME, USER_STATUS_TYPE, USER_STATUS_FLG, 
+    TAG_END_MODE, PUSH_AFTER_FLG, USER_LEVEL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where OID_USER_ID = #{oidUserId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where OID_USER_ID = #{oidUserId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dongyun.app.dao.entity.User" >
+    insert into user (OID_USER_ID, USER_ID, MOBILE, 
+      EMAIL, HEADPIC, USER_PWD, 
+      USER_PWD_STRENGTH, USER_PAY_PWD, USER_TYPE, 
+      INVESTMENT_FLG, FINANCING_FLG, GUARANTEE_FLG, 
+      EMAIL_VERIFY_FLG, LOGIN_TIMES, LOGIN_ERROR_TIMES, 
+      LAST_LOGIN_IP, LAST_LOGIN_DATE, OID_CUSTOMER_SERVICE_ID, 
+      AUTO_FINANCE_TENDER_FLG, AUTO_FINANCE_PROD_FLG, DEL_FLG, 
+      INS_DATE, UPD_DATE, PUSH_CLIENT_ID, 
+      PUSH_CLIENT_TAG, VALID, OLD_PASSWORD, 
+      OLD_SALT, THIRD_PART_FLAG, THIRD_PART_NUMBER, 
+      USER_DIVISION, USER_ACCOUNT_TYPE, PROVINCE, 
+      CITY, AREA, NICKNAME, 
+      USER_STATUS_TYPE, USER_STATUS_FLG, TAG_END_MODE, 
+      PUSH_AFTER_FLG, USER_LEVEL)
+    values (#{oidUserId,jdbcType=CHAR}, #{userId,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, 
+      #{email,jdbcType=VARCHAR}, #{headpic,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+      #{userPwdStrength,jdbcType=CHAR}, #{userPayPwd,jdbcType=VARCHAR}, #{userType,jdbcType=CHAR}, 
+      #{investmentFlg,jdbcType=CHAR}, #{financingFlg,jdbcType=CHAR}, #{guaranteeFlg,jdbcType=CHAR}, 
+      #{emailVerifyFlg,jdbcType=CHAR}, #{loginTimes,jdbcType=INTEGER}, #{loginErrorTimes,jdbcType=INTEGER}, 
+      #{lastLoginIp,jdbcType=VARCHAR}, #{lastLoginDate,jdbcType=TIMESTAMP}, #{oidCustomerServiceId,jdbcType=TINYINT}, 
+      #{autoFinanceTenderFlg,jdbcType=CHAR}, #{autoFinanceProdFlg,jdbcType=CHAR}, #{delFlg,jdbcType=CHAR}, 
+      #{insDate,jdbcType=TIMESTAMP}, #{updDate,jdbcType=TIMESTAMP}, #{pushClientId,jdbcType=VARCHAR}, 
+      #{pushClientTag,jdbcType=VARCHAR}, #{valid,jdbcType=CHAR}, #{oldPassword,jdbcType=VARCHAR}, 
+      #{oldSalt,jdbcType=VARCHAR}, #{thirdPartFlag,jdbcType=CHAR}, #{thirdPartNumber,jdbcType=VARCHAR}, 
+      #{userDivision,jdbcType=CHAR}, #{userAccountType,jdbcType=CHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{userStatusType,jdbcType=CHAR}, #{userStatusFlg,jdbcType=CHAR}, #{tagEndMode,jdbcType=CHAR}, 
+      #{pushAfterFlg,jdbcType=CHAR}, #{userLevel,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dongyun.app.dao.entity.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oidUserId != null" >
+        OID_USER_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="headpic != null" >
+        HEADPIC,
+      </if>
+      <if test="userPwd != null" >
+        USER_PWD,
+      </if>
+      <if test="userPwdStrength != null" >
+        USER_PWD_STRENGTH,
+      </if>
+      <if test="userPayPwd != null" >
+        USER_PAY_PWD,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="investmentFlg != null" >
+        INVESTMENT_FLG,
+      </if>
+      <if test="financingFlg != null" >
+        FINANCING_FLG,
+      </if>
+      <if test="guaranteeFlg != null" >
+        GUARANTEE_FLG,
+      </if>
+      <if test="emailVerifyFlg != null" >
+        EMAIL_VERIFY_FLG,
+      </if>
+      <if test="loginTimes != null" >
+        LOGIN_TIMES,
+      </if>
+      <if test="loginErrorTimes != null" >
+        LOGIN_ERROR_TIMES,
+      </if>
+      <if test="lastLoginIp != null" >
+        LAST_LOGIN_IP,
+      </if>
+      <if test="lastLoginDate != null" >
+        LAST_LOGIN_DATE,
+      </if>
+      <if test="oidCustomerServiceId != null" >
+        OID_CUSTOMER_SERVICE_ID,
+      </if>
+      <if test="autoFinanceTenderFlg != null" >
+        AUTO_FINANCE_TENDER_FLG,
+      </if>
+      <if test="autoFinanceProdFlg != null" >
+        AUTO_FINANCE_PROD_FLG,
+      </if>
+      <if test="delFlg != null" >
+        DEL_FLG,
+      </if>
+      <if test="insDate != null" >
+        INS_DATE,
+      </if>
+      <if test="updDate != null" >
+        UPD_DATE,
+      </if>
+      <if test="pushClientId != null" >
+        PUSH_CLIENT_ID,
+      </if>
+      <if test="pushClientTag != null" >
+        PUSH_CLIENT_TAG,
+      </if>
+      <if test="valid != null" >
+        VALID,
+      </if>
+      <if test="oldPassword != null" >
+        OLD_PASSWORD,
+      </if>
+      <if test="oldSalt != null" >
+        OLD_SALT,
+      </if>
+      <if test="thirdPartFlag != null" >
+        THIRD_PART_FLAG,
+      </if>
+      <if test="thirdPartNumber != null" >
+        THIRD_PART_NUMBER,
+      </if>
+      <if test="userDivision != null" >
+        USER_DIVISION,
+      </if>
+      <if test="userAccountType != null" >
+        USER_ACCOUNT_TYPE,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="area != null" >
+        AREA,
+      </if>
+      <if test="nickname != null" >
+        NICKNAME,
+      </if>
+      <if test="userStatusType != null" >
+        USER_STATUS_TYPE,
+      </if>
+      <if test="userStatusFlg != null" >
+        USER_STATUS_FLG,
+      </if>
+      <if test="tagEndMode != null" >
+        TAG_END_MODE,
+      </if>
+      <if test="pushAfterFlg != null" >
+        PUSH_AFTER_FLG,
+      </if>
+      <if test="userLevel != null" >
+        USER_LEVEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oidUserId != null" >
+        #{oidUserId,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headpic != null" >
+        #{headpic,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwdStrength != null" >
+        #{userPwdStrength,jdbcType=CHAR},
+      </if>
+      <if test="userPayPwd != null" >
+        #{userPayPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=CHAR},
+      </if>
+      <if test="investmentFlg != null" >
+        #{investmentFlg,jdbcType=CHAR},
+      </if>
+      <if test="financingFlg != null" >
+        #{financingFlg,jdbcType=CHAR},
+      </if>
+      <if test="guaranteeFlg != null" >
+        #{guaranteeFlg,jdbcType=CHAR},
+      </if>
+      <if test="emailVerifyFlg != null" >
+        #{emailVerifyFlg,jdbcType=CHAR},
+      </if>
+      <if test="loginTimes != null" >
+        #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="loginErrorTimes != null" >
+        #{loginErrorTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginIp != null" >
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginDate != null" >
+        #{lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oidCustomerServiceId != null" >
+        #{oidCustomerServiceId,jdbcType=TINYINT},
+      </if>
+      <if test="autoFinanceTenderFlg != null" >
+        #{autoFinanceTenderFlg,jdbcType=CHAR},
+      </if>
+      <if test="autoFinanceProdFlg != null" >
+        #{autoFinanceProdFlg,jdbcType=CHAR},
+      </if>
+      <if test="delFlg != null" >
+        #{delFlg,jdbcType=CHAR},
+      </if>
+      <if test="insDate != null" >
+        #{insDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updDate != null" >
+        #{updDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushClientId != null" >
+        #{pushClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="pushClientTag != null" >
+        #{pushClientTag,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=CHAR},
+      </if>
+      <if test="oldPassword != null" >
+        #{oldPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="oldSalt != null" >
+        #{oldSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartFlag != null" >
+        #{thirdPartFlag,jdbcType=CHAR},
+      </if>
+      <if test="thirdPartNumber != null" >
+        #{thirdPartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userDivision != null" >
+        #{userDivision,jdbcType=CHAR},
+      </if>
+      <if test="userAccountType != null" >
+        #{userAccountType,jdbcType=CHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatusType != null" >
+        #{userStatusType,jdbcType=CHAR},
+      </if>
+      <if test="userStatusFlg != null" >
+        #{userStatusFlg,jdbcType=CHAR},
+      </if>
+      <if test="tagEndMode != null" >
+        #{tagEndMode,jdbcType=CHAR},
+      </if>
+      <if test="pushAfterFlg != null" >
+        #{pushAfterFlg,jdbcType=CHAR},
+      </if>
+      <if test="userLevel != null" >
+        #{userLevel,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dongyun.app.dao.entity.User" >
+    update user
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headpic != null" >
+        HEADPIC = #{headpic,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        USER_PWD = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwdStrength != null" >
+        USER_PWD_STRENGTH = #{userPwdStrength,jdbcType=CHAR},
+      </if>
+      <if test="userPayPwd != null" >
+        USER_PAY_PWD = #{userPayPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=CHAR},
+      </if>
+      <if test="investmentFlg != null" >
+        INVESTMENT_FLG = #{investmentFlg,jdbcType=CHAR},
+      </if>
+      <if test="financingFlg != null" >
+        FINANCING_FLG = #{financingFlg,jdbcType=CHAR},
+      </if>
+      <if test="guaranteeFlg != null" >
+        GUARANTEE_FLG = #{guaranteeFlg,jdbcType=CHAR},
+      </if>
+      <if test="emailVerifyFlg != null" >
+        EMAIL_VERIFY_FLG = #{emailVerifyFlg,jdbcType=CHAR},
+      </if>
+      <if test="loginTimes != null" >
+        LOGIN_TIMES = #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="loginErrorTimes != null" >
+        LOGIN_ERROR_TIMES = #{loginErrorTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginIp != null" >
+        LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginDate != null" >
+        LAST_LOGIN_DATE = #{lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oidCustomerServiceId != null" >
+        OID_CUSTOMER_SERVICE_ID = #{oidCustomerServiceId,jdbcType=TINYINT},
+      </if>
+      <if test="autoFinanceTenderFlg != null" >
+        AUTO_FINANCE_TENDER_FLG = #{autoFinanceTenderFlg,jdbcType=CHAR},
+      </if>
+      <if test="autoFinanceProdFlg != null" >
+        AUTO_FINANCE_PROD_FLG = #{autoFinanceProdFlg,jdbcType=CHAR},
+      </if>
+      <if test="delFlg != null" >
+        DEL_FLG = #{delFlg,jdbcType=CHAR},
+      </if>
+      <if test="insDate != null" >
+        INS_DATE = #{insDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updDate != null" >
+        UPD_DATE = #{updDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushClientId != null" >
+        PUSH_CLIENT_ID = #{pushClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="pushClientTag != null" >
+        PUSH_CLIENT_TAG = #{pushClientTag,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        VALID = #{valid,jdbcType=CHAR},
+      </if>
+      <if test="oldPassword != null" >
+        OLD_PASSWORD = #{oldPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="oldSalt != null" >
+        OLD_SALT = #{oldSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartFlag != null" >
+        THIRD_PART_FLAG = #{thirdPartFlag,jdbcType=CHAR},
+      </if>
+      <if test="thirdPartNumber != null" >
+        THIRD_PART_NUMBER = #{thirdPartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userDivision != null" >
+        USER_DIVISION = #{userDivision,jdbcType=CHAR},
+      </if>
+      <if test="userAccountType != null" >
+        USER_ACCOUNT_TYPE = #{userAccountType,jdbcType=CHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        NICKNAME = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatusType != null" >
+        USER_STATUS_TYPE = #{userStatusType,jdbcType=CHAR},
+      </if>
+      <if test="userStatusFlg != null" >
+        USER_STATUS_FLG = #{userStatusFlg,jdbcType=CHAR},
+      </if>
+      <if test="tagEndMode != null" >
+        TAG_END_MODE = #{tagEndMode,jdbcType=CHAR},
+      </if>
+      <if test="pushAfterFlg != null" >
+        PUSH_AFTER_FLG = #{pushAfterFlg,jdbcType=CHAR},
+      </if>
+      <if test="userLevel != null" >
+        USER_LEVEL = #{userLevel,jdbcType=CHAR},
+      </if>
+    </set>
+    where OID_USER_ID = #{oidUserId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dongyun.app.dao.entity.User" >
+    update user
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=CHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      HEADPIC = #{headpic,jdbcType=VARCHAR},
+      USER_PWD = #{userPwd,jdbcType=VARCHAR},
+      USER_PWD_STRENGTH = #{userPwdStrength,jdbcType=CHAR},
+      USER_PAY_PWD = #{userPayPwd,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=CHAR},
+      INVESTMENT_FLG = #{investmentFlg,jdbcType=CHAR},
+      FINANCING_FLG = #{financingFlg,jdbcType=CHAR},
+      GUARANTEE_FLG = #{guaranteeFlg,jdbcType=CHAR},
+      EMAIL_VERIFY_FLG = #{emailVerifyFlg,jdbcType=CHAR},
+      LOGIN_TIMES = #{loginTimes,jdbcType=INTEGER},
+      LOGIN_ERROR_TIMES = #{loginErrorTimes,jdbcType=INTEGER},
+      LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      LAST_LOGIN_DATE = #{lastLoginDate,jdbcType=TIMESTAMP},
+      OID_CUSTOMER_SERVICE_ID = #{oidCustomerServiceId,jdbcType=TINYINT},
+      AUTO_FINANCE_TENDER_FLG = #{autoFinanceTenderFlg,jdbcType=CHAR},
+      AUTO_FINANCE_PROD_FLG = #{autoFinanceProdFlg,jdbcType=CHAR},
+      DEL_FLG = #{delFlg,jdbcType=CHAR},
+      INS_DATE = #{insDate,jdbcType=TIMESTAMP},
+      UPD_DATE = #{updDate,jdbcType=TIMESTAMP},
+      PUSH_CLIENT_ID = #{pushClientId,jdbcType=VARCHAR},
+      PUSH_CLIENT_TAG = #{pushClientTag,jdbcType=VARCHAR},
+      VALID = #{valid,jdbcType=CHAR},
+      OLD_PASSWORD = #{oldPassword,jdbcType=VARCHAR},
+      OLD_SALT = #{oldSalt,jdbcType=VARCHAR},
+      THIRD_PART_FLAG = #{thirdPartFlag,jdbcType=CHAR},
+      THIRD_PART_NUMBER = #{thirdPartNumber,jdbcType=VARCHAR},
+      USER_DIVISION = #{userDivision,jdbcType=CHAR},
+      USER_ACCOUNT_TYPE = #{userAccountType,jdbcType=CHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      NICKNAME = #{nickname,jdbcType=VARCHAR},
+      USER_STATUS_TYPE = #{userStatusType,jdbcType=CHAR},
+      USER_STATUS_FLG = #{userStatusFlg,jdbcType=CHAR},
+      TAG_END_MODE = #{tagEndMode,jdbcType=CHAR},
+      PUSH_AFTER_FLG = #{pushAfterFlg,jdbcType=CHAR},
+      USER_LEVEL = #{userLevel,jdbcType=CHAR}
+    where OID_USER_ID = #{oidUserId,jdbcType=CHAR}
+  </update>
+</mapper>
