@@ -1,0 +1,1 @@
+# Just spring cloud sample
