@@ -15,7 +15,7 @@ spring:
   zipkin:
     base-url: http://192.168.99.100:9411/
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/dyshop?characterEncoding=utf8&useSSL=true
+    url: jdbc:mysql://192.168.99.1:3306/dyshop?characterEncoding=utf8&useSSL=true
     username: loanadmin
     password: loanadmin
     driver-class-name: com.mysql.jdbc.Driver
@@ -23,6 +23,10 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.99.100:8761/eureka
+      defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+#      defaultZone: http://192.168.99.100:8761/eureka
   instance:
     ip-address: true
+management:
+  endpoint:
+    web.

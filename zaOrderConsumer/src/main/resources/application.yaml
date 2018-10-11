@@ -1,5 +1,5 @@
 server:
-  port: 8011
+  port: 8101
 spring:
   application:
     name: order-client
@@ -11,13 +11,21 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.99.100:8761/eureka
+      defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+#      defaultZone: http://192.168.99.100:8761/eureka
   instance:
     perfer-ip-address: true
 feign:
+  okhttp:
+    enable: true
+  httpclient:
+    max-connections: 10
+    max-connections-per-route: 2
   client:
     config:
       order-service:
+        connectTimeout: 3000  #超时设置
+        readTimeout: 3000     #
         logger-level: full
   hystrix:
     enabled: true
@@ -25,4 +33,9 @@ feign:
 logging:
   level:
     com.dongyun.activity.feign.OrderFeign: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, hystrix.stream
 

@@ -1,0 +1,31 @@
+version: "3"
+services:
+  peer1:
+    image: eurekaserver-ha:1.0.0
+    ports:
+      - "8761:8761"
+    environment:
+      - spring.profiles.active=peer1
+  peer2:
+    image: eurekaserver-ha:1.0.0
+    hostname: peer2
+    ports:
+      - "8762:8762"
+    environment:
+      - spring.profiles.active=peer2
+#  order-service:
+#    image: zborderprovider:1.0.0
+#  order-client:
+#    image: zaorderconsumer:1.0.0
+  user-service:
+    image: zbuserprovider:1.0.0
+  user-client:
+    image: zauserconsumer:1.0.0
+  hystrix-turbine:
+    image: hystrix-turbine:1.0.0
+    ports:
+      - "8700:8700"
+  zuul:
+    image: zuul2server:1.0.0
+    ports:
+      - "8411:8411"

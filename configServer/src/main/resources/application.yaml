@@ -14,4 +14,8 @@ spring:
           clone-on-start: true
         encrypt:
           enabled: true
-
+  rabbitmq:
+    host: 192.168.99.100
+    post: 5672
+    username: guest
+    password: guest

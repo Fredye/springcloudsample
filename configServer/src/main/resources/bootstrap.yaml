@@ -9,3 +9,8 @@ encrypt:
 #  -dname "CN=Web Server,OU=Unit,O=Organization,L=City,S=State,C=US" \
 #  -keypass secretkey -keystore server.jks -storepass mypass
 #curl http://127.0.0.1:8000/encrypt -d loanadmin
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,bus-refresh

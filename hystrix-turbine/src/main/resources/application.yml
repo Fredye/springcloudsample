@@ -1,0 +1,21 @@
+server:
+  port: 8700
+spring:
+  application:
+    name: hystrix-turbine
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+#      defaultZone: http://192.168.99.100:8761/eureka
+  instance:
+    prefer-ip-address: true
+turbine:
+  app-config: user-client, order-client
+  cluster-name-expression: new String('default')
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: info, health, turbine, hystrix-stream, turbine.stream

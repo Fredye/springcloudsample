@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ms-provider-user
+  cloud:
+    config:
+      uri: http://127.0.0.1:8000
+      profile: dev
+      label: master
+  rabbitmq:
+    host: 192.168.99.100
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.99.100:8761/eureka
+  instance:
+    prefer-ip-address: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,bus-refresh
+
